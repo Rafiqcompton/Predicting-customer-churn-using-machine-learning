@@ -1,0 +1,23 @@
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+
+# Load the data
+data = pd.read_csv('customer_data.csv')
+
+# Split the data into features and target
+X = data.drop('churn', axis=1)
+y = data['churn']
+
+# Create and train the logistic regression model
+model = LogisticRegression()
+model.fit(X, y)
+
+# Make predictions on the test data
+predictions = model.predict(X_test)
+
+# Calculate the accuracy of the model
+accuracy = np.mean(predictions == y_test)
+
+# Print the accuracy
+print('Accuracy:', accuracy)
